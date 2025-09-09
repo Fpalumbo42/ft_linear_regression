@@ -89,7 +89,7 @@ def denormalize_thetas(t0_std, t1_std, mean_km, gap_type):
     
     return t0_final, t1_final
 
-def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.1, max_iterations = 100):
+def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.01, max_iterations = 10000):
     
     
     if km_list is None or price_list is None or m is None:
