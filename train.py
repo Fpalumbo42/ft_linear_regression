@@ -117,10 +117,17 @@ def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.1
     
     t0, t1 = denormalize_thetas(t0, t1, mean_km, gap_type)
        
-    save_model(t0, t1)
-       
-    
-    print(f"final t0 {t0}, t1 {t1}") 
+    return t0, t1
+
+def plot_data(km, price):
+
+    plt.scatter(km, price, color='blue', label='Real data', alpha=0.7)
+    plt.xlabel('Mileage (km)')
+    plt.ylabel('Price ')
+    plt.title('Car Price vs Mileage')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.show()
 
 def main():
     data = open_file("data.csv")
@@ -135,8 +142,9 @@ def main():
         print("Failed to parse data.")
         return
         
-    train_model(km, price, m)
-    plot_data(km, price, m)
+    t0, t1 = train_model(km, price, m)
+    save_model(t0, t1)
+    plot_data(km, price)
 
 if __name__ == "__main__":
     main()

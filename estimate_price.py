@@ -29,7 +29,7 @@ def main():
    
     price = estimate_price(t0, t1, km)
 
-    print(f"The estimated price of the car is: ${price:.2f}")
+    print(f"The estimated price of the car is: {price:.2f}")
 
 if __name__ == "__main__":
     main()
