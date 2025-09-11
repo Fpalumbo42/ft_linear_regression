@@ -119,15 +119,30 @@ def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.0
        
     return t0, t1
 
-def plot_data(km, price):
+def generate_regression_line(km, t0, t1):
+
+    x = []
+    y = []
+
+    x.append(min(km))
+    y.append(t0 + t1 * min(km))
+
+    x.append(max(km))
+    y.append(t0 + t1 * max(km))
+    
+    return x, y
+
+def plot_data(km, price, t0, t1):
 
     plt.scatter(km, price, color='blue', label='Real data', alpha=0.7)
+    x, y = generate_regression_line(km, t0, t1)
+    plt.plot(x, y, color='red', label='Regression line')
     plt.xlabel('Mileage (km)')
     plt.ylabel('Price ')
     plt.title('Car Price vs Mileage')
     plt.legend()
     plt.grid(True, alpha=0.3)
-    plt.show()
+    plt.savefig('linear_regression.png')
 
 def main():
     data = open_file("data.csv")
@@ -144,7 +159,7 @@ def main():
         
     t0, t1 = train_model(km, price, m)
     save_model(t0, t1)
-    plot_data(km, price)
+    plot_data(km, price, t0, t1)
 
 if __name__ == "__main__":
     main()
