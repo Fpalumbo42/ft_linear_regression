@@ -68,13 +68,11 @@ def standardize_features(km_list):
     
     # media
     mean_km = sum(km_list) / len(km_list)
-    print(mean_km)
     variance = 0
     
     # ecart type
     for km in km_list:
         variance += (km - mean_km) ** 2
-        print(f"le km {km} laaaaaaaaaaaaaaaa var {variance}" )
     gap_type = math.sqrt(variance / len(km_list))
     
     std_km = []
@@ -110,7 +108,6 @@ def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.0
        
        tmp_t0 = learning_rate * (1/m) * sum(error_range)
        tmp_t1 = learning_rate * (1/m) * sum([error_range[i] * km_list[i] for i in range(m)])
-       print(f"{tmp_t0} et {tmp_t1}")
 
        t0 -= tmp_t0
        t1 -= tmp_t1
