@@ -22,12 +22,16 @@ def main():
     
     try:
         km = float(input("Enter the mileage of the car in km: "))
+        
+        if (km < 0):
+            raise ValueError()
+
     except Exception as e:
         print(f"Please enter a valid number")
         exit()
    
     price = estimate_price(t0, t1, km)
-    print(f"The estimated price of the car is: {price:.2f}")
+    print(f"The estimated price of the car is: {price:.2f}€")
 
 if __name__ == "__main__":
     main()

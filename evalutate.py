@@ -15,14 +15,13 @@ def get_mean_absolute_percentage_error(price, computed_results, m):
         gap += abs(price[i] - computed_results[i]) / price[i]
     return 1/m * gap * 100
 
-def write_evaluation_report(mse, rmse, mape, t0, t1, m, filename="evaluation_results.txt"):
+def write_evaluation_report(rmse, mape, t1, filename="evaluation_results.txt"):
     try:
         with open(filename, 'w') as f:
             f.write("LINEAR REGRESSION MODEL EVALUATION REPORT\n")
             f.write(f"Price decreases by {abs(t1):.4f}€ for each additional kilometer\n")
             f.write("ACCURACY METRICS:\n")
-            f.write("-" * 17 + "\n")
-            f.write(f"Mean Squared Error (MSE): {mse:.2f}\n") 
+            f.write("\n")
             f.write(f"Root Mean Squared Error (RMSE): {rmse:.2f}€\n")
             f.write(f"Mean Absolute Percentage Error (MAPE): {mape:.2f}%\n")
         
@@ -48,8 +47,7 @@ def main():
     mape = get_mean_absolute_percentage_error(price, computed_results, m)
     rmse = math.sqrt(mse)
     
-    # Write detailed report instead of printing
-    write_evaluation_report(mse, rmse, mape, t0, t1, m)
+    write_evaluation_report(rmse, mape, t1)
     
     print(f"RMSE: {rmse:.2f}€ | MAPE: {mape:.2f}%")
 

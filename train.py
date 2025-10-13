@@ -66,11 +66,11 @@ def save_model(t0, t1):
 
 def standardize_features(km_list):
     
-    # media
+    #mean
     mean_km = sum(km_list) / len(km_list)
     variance = 0
     
-    # ecart type
+    #ecart type
     for km in km_list:
         variance += (km - mean_km) ** 2
     gap_type = math.sqrt(variance / len(km_list))
@@ -87,8 +87,7 @@ def denormalize_thetas(t0_std, t1_std, mean_km, gap_type):
     
     return t0_final, t1_final
 
-def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.01, max_iterations = 10000):
-    
+def train_model(km_list = None, price_list = None, m = None, learning_rate = 0.01, max_iterations = 1000):
     
     if km_list is None or price_list is None or m is None:
         print("Invalid data for train")
@@ -142,6 +141,7 @@ def plot_data(km, price, t0, t1):
     plt.savefig('linear_regression.png')
 
 def main():
+
     data = open_file("data.csv")
     
     if data is None:

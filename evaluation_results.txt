@@ -1,7 +1,6 @@
 LINEAR REGRESSION MODEL EVALUATION REPORT
 Price decreases by 0.0214€ for each additional kilometer
 ACCURACY METRICS:
------------------
-Mean Squared Error (MSE): 445645.25
+
 Root Mean Squared Error (RMSE): 667.57€
 Mean Absolute Percentage Error (MAPE): 9.65%
